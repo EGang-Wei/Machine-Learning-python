@@ -7,7 +7,7 @@ import pandas as pd
 
 
 DATA_FILE = Path(__file__).with_name("ex1data1.txt")
-OUTPUT_DIR = Path(__file__).with_name("output")
+OUTPUT_DIR = Path(__file__).with_name("output-Univariate")
 ALPHA = 0.01
 ITERATIONS = 1500
 
