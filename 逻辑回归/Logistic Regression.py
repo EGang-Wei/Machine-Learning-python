@@ -95,6 +95,7 @@ ax.set_ylabel('Exam 2 Score')
 plt.show()
 
 
+
 # ========= 8.预测：考试1=45分，考试2=55分，录取概率 =========
 prob = sigmoid(best_theta.dot([1, 45, 55]))
 print(f"\n考试45,55的录取概率：{prob:.4f}")
