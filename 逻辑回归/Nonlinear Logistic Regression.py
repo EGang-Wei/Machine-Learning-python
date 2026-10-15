@@ -5,13 +5,13 @@ matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import scipy.optimize as opt
 
-# ========= 1.读取数据 =========
+# 读取数据
 path = 'ex2data2.txt'
 data = pd.read_csv(path, header=None, names=['Test 1', 'Test 2', 'Accepted'])
 print("数据前5行：")
 print(data.head())
 
-# 区分正负样本：录取=1，未录取=0
+# 区分正负样本：接受=1，不接受=0
 positive = data[data['Accepted'].isin([1])]
 negative = data[data['Accepted'].isin([0])]
 
@@ -24,22 +24,25 @@ ax.set_xlabel('Test 1 Score')
 ax.set_ylabel('Test 2 Score')
 plt.show()
 
-
+# sigmiod函数
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
-#逻辑回归代价函数
+# 逻辑回归代价函数
 def cost(theta, X, y):
     X = np.array(X)
     y = np.array(y)
     theta = np.array(theta)
+
 # sigmoid(X @ theta.T)：模型预测概率 h_θ(x)
+
     h = sigmoid(X @ theta.T)
     first = np.multiply(y , np.log(h))
     second = np.multiply((1 - y) , np.log(1 - h))
     return -np.sum(first + second) / (len(X))
 
-#构造X，y矩阵，添加矩阵映射
+# 构造X，y矩阵，添加矩阵映射
+
 data.insert(0, 'ones', 1)
 data.insert(3, 'Text 1 square', data.iloc[:, 1] * data.iloc[:, 1])
 data.insert(4, 'Text 2 square', data.iloc[:, 2] * data.iloc[:, 2])
@@ -54,7 +57,7 @@ y = y.to_numpy()
 
 print("\n初始代价函数值（theta为0）：", cost(theta, X, y))
 
-#梯度上升计算函数
+# 梯度下降计算函数
 def gradient(theta, X, y):
     X = np.array(X)
     y = np.array(y)
@@ -73,7 +76,7 @@ best_theta = result[0]
 print("最优theta参数：", best_theta)
 print("优化后代价函数值：", cost(best_theta, X, y))
 
-# ========= 8. 绘制分类边界 =========
+# 绘制分类边界
 
 # 提取原始数据
 positive = data[data['Accepted'] == 1]
