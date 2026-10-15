@@ -35,6 +35,7 @@ def cost(theta, X, y):
     y = np.array(y)
     theta = np.array(theta)
 
+
 # sigmoid(X @ theta.T)：模型预测概率 h_θ(x)
 
     h = sigmoid(X @ theta.T)
