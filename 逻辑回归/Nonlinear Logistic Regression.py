@@ -24,7 +24,7 @@ ax.set_xlabel('Test 1 Score')
 ax.set_ylabel('Test 2 Score')
 plt.show()
 
-# sigmiod函数
+# sigmiod 函数
 def sigmoid(z):
     return 1 / (1 + np.exp(-z))
 
